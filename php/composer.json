@@ -1,0 +1,7 @@
+{
+    "require": {
+        "opencensus/opencensus": "~0.2",
+        "google/cloud-vision": "^0.19.1",
+        "opencensus/opencensus-exporter-stackdriver": "~0.1"
+    }
+}

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.3.0" />
+    <PackageReference Include="OpenCensus.Collector.Dependencies" Version="0.1.0-alpha-33381" />
+    <PackageReference Include="OpenCensus.Exporter.Stackdriver" Version="0.1.0-alpha-33381" />
+    <PackageReference Include="OpenCensus" Version="0.1.0-alpha-33381" />
+  </ItemGroup>
+
+</Project>
+    <!-- <ProjectReference Include="..\OpenCensus.Collector.Dependencies\OpenCensus.Collector.Dependencies.csproj" />
+    <ProjectReference Include="..\OpenCensus.Exporter.Stackdriver\OpenCensus.Exporter.Stackdriver.csproj" />
+    <ProjectReference Include="..\OpenCensus.Exporter.Prometheus\OpenCensus.Exporter.Prometheus.csproj" />
+    <ProjectReference Include="..\OpenCensus\OpenCensus.csproj" />
+    <ProjectReference Include="..\OpenCensus.Exporter.Zipkin\OpenCensus.Exporter.Zipkin.csproj" />
+    <ProjectReference Include="..\OpenCensus.Exporter.ApplicationInsights\OpenCensus.Exporter.ApplicationInsights.csproj" /> -->

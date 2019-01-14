@@ -1,0 +1,31 @@
+.vscode
+
+# CSharp
+obj/
+bin/
+
+# Go
+
+# Java
+.gradle
+gradle/
+build/
+
+# Nodejs
+node_modules/
+package-lock.json
+
+# PHP
+vendor/
+composer.lock
+
+# Python
+Pipfile.lock
+
+# Ruby
+Gemfile.lock
+
+
+
+# Remove when read
+screenshots/
