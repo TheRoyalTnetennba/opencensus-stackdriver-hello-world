@@ -24,8 +24,3 @@ Pipfile.lock
 
 # Ruby
 Gemfile.lock
-
-
-
-# Remove when read
-screenshots/
