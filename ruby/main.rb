@@ -1,37 +1,29 @@
-require 'sinatra'
 require 'opencensus-stackdriver'
-require "opencensus/trace/integrations/rack_middleware"
-require "google/cloud/vision"
+require 'google/cloud/vision'
 
 OpenCensus.configure do |c|
   c.trace.default_sampler = OpenCensus::Trace::Samplers::AlwaysSample.new
   c.trace.exporter = OpenCensus::Trace::Exporters::Stackdriver.new
 end
 
-configure do
-  use OpenCensus::Trace::Integrations::RackMiddleware
-end
+# Instantiates a client
+image_annotator = Google::Cloud::Vision::ImageAnnotator.new
 
-get '/' do
-  image_annotator = Google::Cloud::Vision::ImageAnnotator.new
+file_name = '../resources/demo-image.jpg'
 
-  OpenCensus::Trace.in_span "my_task" do |span|
-    # 9.times do 
-    #   image_annotator.label_detection(
-    #     image: ENV['IMAGE'],
-    #   )
-    # end
-  
-    response = image_annotator.label_detection(
-      image: ENV['IMAGE'],
-    )
-  
-    response.responses.each do |res|
-      res.label_annotations.each do |label|
-        puts label.description
-      end
+response = image_annotator.label_detection image: file_name
+
+OpenCensus::Trace.start_request_trace do
+  OpenCensus::Trace.in_span 'my_task' do
+    9.times do
+      image_annotator.label_detection image: file_name
     end
   end
+end
 
-  "done"
+response.responses.each do |res|
+  puts 'Labels:'
+  res.label_annotations.each do |label|
+    puts label.description
+  end
 end

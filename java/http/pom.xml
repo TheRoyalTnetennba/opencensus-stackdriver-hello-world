@@ -17,11 +17,11 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.helloworld</groupId>
-  <artifactId>opencensus-hello-world</artifactId>
+  <artifactId>java-tracing-http</artifactId>
 
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>cloud-bigtable-hello-world</name>
+  <name>java-tracing-http</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -58,7 +58,7 @@
     </dependency>
     <dependency>
         <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-vision</artifactId>
+        <artifactId>google-cloud-storage</artifactId>
         <version>1.60.0</version>
     </dependency>
   </dependencies>

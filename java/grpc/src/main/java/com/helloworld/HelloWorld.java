@@ -1,22 +1,3 @@
-/**
- * Copyright 2016 Google Inc. All Rights Reserved.
- *
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.helloworld;
 
 import io.opencensus.trace.Tracing;
@@ -42,23 +23,8 @@ import java.util.List;
 
 import java.io.IOException;
 
-/**
- * A minimal application that connects to Cloud Bigtable using the native HBase
- * API and performs some basic operations.
- */
 public class HelloWorld {
-
-    // private static final Tracer tracer = Tracing.getTracer();
-
-    /**
-     * Connects to Cloud Bigtable, runs some basic operations and prints the
-     * results.
-     */
     private static void doHelloWorld() {
-
-        // [START connecting_to_bigtable]
-        // Create the Bigtable connection, use try-with-resources to make sure it gets
-        // closed
         try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
             // Instantiates a client\
             String projectId = requiredProperty("GOOGLE_CLOUD_PROJECT");
@@ -66,7 +32,7 @@ public class HelloWorld {
             StackdriverTraceExporter
                     .createAndRegister(StackdriverTraceConfiguration.builder().setProjectId(projectId).build());
             // The path to the image file to annotate
-            String fileName = "../resources/demo-image.jpg";
+            String fileName = "../../../resources/demo-image.jpg";
 
             // Reads the image file into memory
             Path path = Paths.get(fileName);
