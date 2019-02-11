@@ -1,5 +1,7 @@
 package com.helloworld;
 
+import io.opencensus.common.Scope;
+import io.opencensus.trace.Tracer;
 import io.opencensus.trace.Tracing;
 import io.opencensus.trace.config.TraceParams;
 import io.opencensus.trace.samplers.Samplers;
@@ -23,6 +25,8 @@ import java.util.List;
 import java.io.IOException;
 
 public class HelloWorld {
+    private static final Tracer tracer = Tracing.getTracer();
+
     private static void doHelloWorld() {
         try {
             String projectId = requiredProperty("GOOGLE_CLOUD_PROJECT");
@@ -36,7 +40,17 @@ public class HelloWorld {
         
             Blob blob = storage.get(BlobId.of(bucketName, "demo-image.jpg"));
 
-            blob.downloadTo(Paths.get("../../../downloads/demo-image.jpg"));
+            try (Scope ss =
+                tracer
+                    .spanBuilder("JavaHTTP")
+                    .setRecordEvents(true)
+                    .setSampler(Samplers.alwaysSample())
+                    .startScopedSpan()) {
+                for (int i = 0; i < 10; i++) {
+                    blob.downloadTo(Paths.get("../../downloads/demo-image.jpg"));
+                }
+                tracer.getCurrentSpan().addAnnotation("Finished initial work");
+            }
 
         } catch (IOException e) {
             System.err.println("Exception while running HelloWorld: " + e.getMessage());
@@ -61,5 +75,5 @@ public class HelloWorld {
         }
         return value;
     }
-
 }
+

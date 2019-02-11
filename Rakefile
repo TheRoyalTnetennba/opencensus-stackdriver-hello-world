@@ -41,7 +41,7 @@ def verify_args args
     raise ArgumentError.new "Invalid feature option: #{feature}. Valid "\
       "options are grpc, http, or stats."
   end
-  language.to_sym, feature.to_sym
+  return language.to_sym, feature.to_sym
 end
 
 class LanguageCommands

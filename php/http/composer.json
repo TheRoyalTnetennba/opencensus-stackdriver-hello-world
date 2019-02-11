@@ -1,0 +1,7 @@
+{
+    "require": {
+        "opencensus/opencensus": "~0.2",
+        "opencensus/opencensus-exporter-stackdriver": "~0.1",
+        "google/cloud-storage": "^1.11"
+    }
+}

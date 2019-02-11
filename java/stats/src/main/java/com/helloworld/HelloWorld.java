@@ -32,7 +32,7 @@ public class HelloWorld {
             StackdriverTraceExporter
                     .createAndRegister(StackdriverTraceConfiguration.builder().setProjectId(projectId).build());
             // The path to the image file to annotate
-            String fileName = "../../resources/demo-image.jpg";
+            String fileName = "../../../resources/demo-image.jpg";
 
             // Reads the image file into memory
             Path path = Paths.get(fileName);

@@ -46,7 +46,7 @@ namespace HelloWorld
                 }
             }
 
-            Thread.Sleep(TimeSpan.FromMilliseconds(15100));
+            Thread.Sleep(TimeSpan.FromMilliseconds(5000));
 
         }
     }
