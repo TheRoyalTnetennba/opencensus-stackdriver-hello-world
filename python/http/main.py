@@ -21,7 +21,7 @@ def main(repetitions=10):
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(os.environ["GOOGLE_CLOUD_STORAGE_BUCKET"])
     blob = bucket.blob('demo-image.jpg')
-    with tracer.span(name='python-http') as span1:
+    with tracer.span(name='python-http'):
         for _ in range(repetitions):
             blob.download_to_filename('../../downloads/demo-image.jpg')
 

@@ -13,6 +13,8 @@ gradle/
 build/
 target/
 .project
+.settings
+.classpath
 
 # Nodejs
 node_modules/
@@ -24,6 +26,7 @@ composer.lock
 
 # Python
 Pipfile.lock
+__pycache__
 
 # Ruby
 Gemfile.lock
